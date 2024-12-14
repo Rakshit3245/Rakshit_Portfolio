@@ -17,7 +17,6 @@ Foodify is a food delivery platform where users can browse menus, order food, an
 - HTML
 - CSS
 - JavaScript
-- React
 - Python
 - Python Web Development (Django)
 - MySQL
