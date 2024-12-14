@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Day-4-Portfolio-Website-Awesone
 
 Embark on an exhilarating journey of web development with the "100 Days, 100 Websites" challenge! Over the course of 100 days, immerse yourself in the world of HTML, CSS, and JavaScript as you craft 100 unique websites from scratch. Each day presents an opportunity to explore new design concepts, master coding techniques, and unleash your creativity.
@@ -38,3 +39,6 @@ Join the "100 Days, 100 Websites" challenge today and witness your proficiency i
 
 
 
+=======
+# Rakshit_Portfolio
+>>>>>>> 7f295394169ddc471433f8cd9c9044d48b36ceee
