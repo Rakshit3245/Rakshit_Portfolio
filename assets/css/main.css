@@ -380,6 +380,7 @@ a.back-to-top:hover, a.back-to-top:focus{
     -webkit-animation: fadeInDown 800ms;
     animation: fadeInDown 800ms;
     -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
     border-radius: 0px;
     background:#000000;
 	box-shadow:0 10px 40px rgba(0, 0, 0, 0.05);
@@ -511,15 +512,51 @@ a.back-to-top:hover, a.back-to-top:focus{
 05. Start Service Area
 ========================================================================== */
 .services-item{
-    background: transparent;
-    border-radius: 5px;
-	box-shadow: 0 1px 30px rgba(255, 255, 255, 0.2);
-    padding: 50px 25px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    padding: 40px 25px;
     text-align: center;
-    transition: all 0.3s ease-in-out 0s;
-    -moz-transition: all 0.3s ease-in-out 0s;
-    -webkit-transition: all 0.3s ease-in-out 0s;
-    -o-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.services-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(254, 79, 108, 0.1), rgba(255, 123, 59, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: -1;
+}
+
+.services-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 40px rgba(254, 79, 108, 0.2);
+    border-color: rgba(254, 79, 108, 0.3);
+}
+
+.services-item:hover::before {
+    opacity: 1;
+}
+
+.services-item .icon {
+    transition: transform 0.3s ease-in-out;
+}
+
+.services-item:hover .icon {
+    transform: scale(1.1);
 }
 .services-item .icon{
     background: url(../img/service/service-icon-bg.svg) no-repeat;
@@ -533,12 +570,32 @@ a.back-to-top:hover, a.back-to-top:focus{
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
-.services-item .services-content h3 a{
-	font-size: 18px;
-	color: #fff;
+.services-item .services-content h3 a {
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+    position: relative;
+    display: inline-block;
 }
-.services-item:hover .services-content h3 a{
-	color: #fe4f6c;
+
+.services-item .services-content h3 a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #fe4f6c;
+    transition: width 0.3s ease-in-out;
+}
+
+.services-item:hover .services-content h3 a {
+    color: #fe4f6c;
+}
+
+.services-item:hover .services-content h3 a::after {
+    width: 100%;
 }
 .services-item .services-content p{
 	line-height: 22px;
@@ -696,6 +753,181 @@ FunFacts CSS
     color: #fe4f6c;
     margin-top: 5px;
 }
+/* ==========================================================================
+03. Hero Section
+========================================================================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 5rem 0;
+  overflow: hidden;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-left {
+  flex: 1;
+  max-width: 600px;
+  color: #fff;
+}
+
+.hero-greeting {
+  font-size: 1.4rem;
+  color: #fff;
+  margin-bottom: 0.8rem;
+  font-weight: 400;
+}
+
+.hero-title {
+  font-size: 3.6rem;
+  line-height: 1.2;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.hero-title span {
+  color: #ff4a57; /* Using your theme's accent color */
+  display: inline-block;
+}
+
+.hero-subtitle {
+  color: #d0d0d0;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.hero-btn {
+  display: inline-block;
+  border: none;
+  outline: none;
+  padding: 0.9rem 2.2rem;
+  border-radius: 999px;
+  background: #ff4a57;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(255, 74, 87, 0.3);
+  background: #ff2e3d;
+  color: #fff;
+}
+
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  margin-right: -50px;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  max-width: 400px;
+  aspect-ratio: 3/4;
+  border-radius: 24px;
+  padding: 6px;
+  background: linear-gradient(135deg, #ff4a57, #ff7b3b);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8);
+}
+
+.hero-image-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 18px;
+  background: radial-gradient(circle at top, #151515 0%, #050505 55%, #000 100%);
+  z-index: 0;
+}
+
+.hero-image {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  object-fit: cover;
+  object-position: center top;
+  filter: brightness(1.08);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform-origin: center center;
+}
+
+.hero-image-wrapper:hover .hero-image {
+  transform: scale(1.05);
+  filter: brightness(1.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.hero-image-wrapper {
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.hero-image-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 50px rgba(255, 74, 87, 0.2);
+}
+
+/* Responsive styles */
+@media (max-width: 991px) {
+  .hero-content {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding-top: 100px;
+  }
+  
+  .hero-left {
+    max-width: 100%;
+    margin-top: 2rem;
+  }
+  
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .hero-image-wrapper {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.95rem;
+  }
+  
+  .hero-btn {
+    padding: 0.8rem 1.8rem;
+    font-size: 0.95rem;
+  }
+}
+
 /* ==========================================================================
 04. End About Area
 ========================================================================== */
